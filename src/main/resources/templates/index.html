@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Task Manager</title>
+</head>
+<body>
+
+<h1>Personal Task Manager</h1>
+
+<form action="/tasks" method="post">
+    <input type="text" name="title" placeholder="Enter a task title">
+    <button type="submit">Add Task</button>
+</form>
+
+<h2>My Tasks</h2>
+
+<ul>
+    <li th:each="task : ${tasks}">
+        <span th:text="${task.id}"></span>>
+        -
+        <span th:text="${task.title}"></span>
+    </li>
+</ul>
+
+</body>
+</html>
