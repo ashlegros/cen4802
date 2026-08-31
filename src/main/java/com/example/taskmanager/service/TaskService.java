@@ -28,5 +28,14 @@ public class TaskService {
         return false;
     }
 
+    public boolean updateTaskCompletionStatus(int id) {
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                task.setCompleted();
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
