@@ -4,6 +4,7 @@ import org.springframework.ui.Model;
 import com.example.taskmanager.service.TaskService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,6 +26,12 @@ public class TaskController {
     @PostMapping("/tasks")
     public String addTask(@RequestParam String title) {
         taskService.addTask(title);
+        return "redirect:/";
+    }
+
+    @PostMapping("/task/{id}/complete")
+    public String completeTask(@PathVariable int id) {
+        taskService.updateTaskCompletionStatus(id);
         return "redirect:/";
     }
 }
