@@ -38,4 +38,14 @@ public class TaskService {
         return false;
     }
 
+    public boolean deleteTask(int id) {
+        for (Task task : tasks) {
+            if (task.getId() == id) {
+                tasks.remove(task);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
