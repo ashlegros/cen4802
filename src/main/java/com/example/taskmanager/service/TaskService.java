@@ -31,7 +31,7 @@ public class TaskService {
     public boolean updateTaskCompletionStatus(int id) {
         for (Task task : tasks) {
             if (task.getId() == id) {
-                task.setCompleted();
+                task.setCompletedTrue();
                 return true;
             }
         }
