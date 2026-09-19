@@ -44,4 +44,15 @@ class PersonalTaskManagerApplicationTests {
 
         assertEquals(0, taskService.getAllTasks().size());
     }
+    @Test
+    void remainingTaskCountShouldOnlyIncludeIncompleteTasks() {
+        TaskService taskService = new TaskService();
+
+        taskService.addTask("Incomplete task");
+        taskService.addTask("Completed task");
+
+        taskService.updateTaskCompletionStatus(2);
+
+        assertEquals(1, taskService.getRemainingTasks());
+    }
 }
