@@ -48,4 +48,14 @@ public class TaskService {
         return false;
     }
 
+    public int getRemainingTasks() {
+        int count = 0;
+        for (Task task : tasks) {
+            if (!task.isCompleted()) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 }

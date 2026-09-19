@@ -20,6 +20,7 @@ public class TaskController {
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("tasks", taskService.getAllTasks());
+        model.addAttribute("remainingTasks", taskService.getRemainingTasks());
         return "index";
     }
 
