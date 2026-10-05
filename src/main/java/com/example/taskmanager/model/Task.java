@@ -4,11 +4,20 @@ public class Task {
     private int id;
     private String title;
     private boolean completed;
+    private String priority;
+
+    public Task(int id, String title, String priority) {
+        this.id = id;
+        this.title = title;
+        this.completed = false;
+        this.priority = priority;
+    }
 
     public Task(int id, String title) {
         this.id = id;
         this.title = title;
         this.completed = false;
+        this.priority = "Low";
     }
 
     public int getId() {
@@ -31,5 +40,13 @@ public class Task {
     }
     public void setCompletedTrue() {
         this.completed = true;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 }

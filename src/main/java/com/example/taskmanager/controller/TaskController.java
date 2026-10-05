@@ -25,8 +25,8 @@ public class TaskController {
     }
 
     @PostMapping("/tasks")
-    public String addTask(@RequestParam String title) {
-        taskService.addTask(title);
+    public String addTask(@RequestParam String title, @RequestParam String priority) {
+        taskService.addTask(title, priority);
         return "redirect:/";
     }
 
