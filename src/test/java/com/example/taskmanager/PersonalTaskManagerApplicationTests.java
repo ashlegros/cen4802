@@ -11,9 +11,9 @@ class PersonalTaskManagerApplicationTests {
     void addingATaskShouldAddATaskToTheService(){
         TaskService taskService = new TaskService();
 
-        Task newTask = new Task(1 ,"Testing the adding feature");
+        Task newTask = new Task(1 ,"Testing the adding feature", "Low");
 
-        taskService.addTask(newTask.getTitle());
+        taskService.addTask(newTask.getTitle(),  newTask.getPriority());
 
         assertEquals(1, taskService.getAllTasks().size());
         assertEquals(newTask.getTitle(),taskService.getAllTasks().get(0).getTitle());
@@ -23,7 +23,7 @@ class PersonalTaskManagerApplicationTests {
     void updatingATaskCompletionShouldTurnStatusToTrue(){
         TaskService taskService = new TaskService();
 
-        taskService.addTask("Testing the completion status feature");
+        taskService.addTask("Testing the completion status feature", "High");
 
         Task newTask = taskService.getAllTasks().get(0);
 
@@ -36,9 +36,9 @@ class PersonalTaskManagerApplicationTests {
     void deletingATaskShouldRemoveATaskFromTheService(){
         TaskService taskService = new TaskService();
 
-        Task newTask = new Task(1 ,"Testing the delete feature");
+        Task newTask = new Task(1 ,"Testing the delete feature",  "High");
 
-        taskService.addTask(newTask.getTitle());
+        taskService.addTask(newTask.getTitle(),   newTask.getPriority());
 
         taskService.deleteTask(newTask.getId());
 
@@ -48,8 +48,8 @@ class PersonalTaskManagerApplicationTests {
     void remainingTaskCountShouldOnlyIncludeIncompleteTasks() {
         TaskService taskService = new TaskService();
 
-        taskService.addTask("Incomplete task");
-        taskService.addTask("Completed task");
+        taskService.addTask("Incomplete task", "Low");
+        taskService.addTask("Completed task", "Low");
 
         taskService.updateTaskCompletionStatus(2);
 
