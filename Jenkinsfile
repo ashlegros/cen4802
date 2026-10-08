@@ -19,6 +19,12 @@ pipeline {
                 sh './mvnw -B package -DskipTests'
             }
         }
+
+        stage('Build Docker Image'){
+            steps{
+                sh 'docker build -t personal-task-manager .'
+            }
+        }
     }
 
     post {
