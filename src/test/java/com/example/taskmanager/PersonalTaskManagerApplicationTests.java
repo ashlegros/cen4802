@@ -53,6 +53,6 @@ class PersonalTaskManagerApplicationTests {
 
         taskService.updateTaskCompletionStatus(2);
 
-        assertEquals(2, taskService.getRemainingTasks()); //Controlled Error: Change task count to 2 instead of 1
+        assertEquals(1, taskService.getRemainingTasks());
     }
 }
