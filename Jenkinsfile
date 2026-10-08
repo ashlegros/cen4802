@@ -22,7 +22,7 @@ pipeline {
 
         stage('Build Docker Image'){
             steps{
-                sh '$DOCKER-BIN/docker build -t personal-task-manager .'
+                sh '$DOCKER_BIN/docker build -t personal-task-manager .'
             }
         }
     }
