@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: personal-task-manager
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: personal-task-manager
+
+  template:
+    metadata:
+      labels:
+        app: personal-task-manager
+
+    spec:
+      containers:
+        - name: personal-task-manager
+          image: personal-task-manager:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
