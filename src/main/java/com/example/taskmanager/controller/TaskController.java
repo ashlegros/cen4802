@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Controller
 public class TaskController {
-
+    private static final Logger log = LoggerFactory.getLogger("tasks");
     private final TaskService taskService;
 
     public TaskController(TaskService taskService) {
@@ -26,7 +28,14 @@ public class TaskController {
 
     @PostMapping("/tasks")
     public String addTask(@RequestParam String title, @RequestParam String priority) {
-        taskService.addTask(title, priority);
+
+        try {
+            taskService.addTask(title, priority);
+        }
+        catch (IllegalArgumentException e) {
+            log.error(e.getMessage());
+        }
+
         return "redirect:/";
     }
 
